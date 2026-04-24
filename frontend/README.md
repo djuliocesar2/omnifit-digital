@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# OmniFit Digital 🏋️‍♂️ - Sistema de Gestão Fitness
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+O **OmniFit Digital** é uma aplicação Full Stack projetada para modernizar a interação entre academias, personais trainers e alunos. O projeto combina uma interface de usuário de alta performance com um ecossistema digital que permite a contratação de planos e o acompanhamento dinâmico de treinos.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🎯 Objetivo do Projeto
+Este software foi desenvolvido para resolver a fragmentação de informações no ambiente fitness. Ele permite que:
+- **Alunos** realizem login, escolham planos e acessem fichas de treino personalizadas.
+- **Academias** gerenciem a base de dados de usuários e pagamentos.
+- **Ecossistema** opere com uma interface moderna baseada em Glassmorphism, focada na experiência do usuário (UX).
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠 Tecnologias e Ferramentas
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Frontend
+- **React.js**: Biblioteca principal para construção da interface SPA (Single Page Application).
+- **Lucide React**: Biblioteca de ícones vetoriais para uma UI limpa.
+- **States & Hooks**: Gerenciamento de sessão de usuário e navegação dinâmica.
+- **CSS-in-JS**: Estilização moderna com efeitos de transparência e blur (Glassmorphism).
 
-### `npm test`
+### Backend & Database
+- **SQL (ANSI)**: Modelagem relacional completa.
+- **UUID**: Identificadores únicos universais para segurança de dados.
+- **PostgreSQL/MySQL**: Compatibilidade com os principais SGBDs relacionais.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🏗 Arquitetura do Sistema
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+A aplicação segue o modelo de camadas para garantir escalabilidade:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1.  **Interface (React)**: Responsável por capturar os dados do usuário (Login) e renderizar as visões dinâmicas (Planos e Dashboard).
+2.  **Lógica de Negócio**: Processamento de e-mails para identificação automática e validação de sessão.
+3.  **Persistência (SQL)**: Estrutura de dados normalizada em 3ª Forma Normal para evitar redundância.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 📂 Estrutura do Repositório
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```text
+omnifit-digital/
+├── frontend/             # Código fonte da aplicação React
+│   ├── src/
+│   │   ├── App.js        # Lógica central e roteamento
+│   │   └── ...
+│   └── package.json      # Dependências do projeto
+├── database.sql          # Script de criação do Banco de Dados
+└── README.md             # Documentação do projeto
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+🚀 Como Executar
+1. Banco de Dados
+Abra seu gerenciador SQL e execute o script database.sql. Ele criará as tabelas:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Usuario (Credenciais e Perfis)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Aluno (Vínculo com Planos)
 
-## Learn More
+Plano (Especificações e Valores)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Exercicio e Treino (Conteúdo técnico)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Frontend
+Navegue até a pasta do frontend e inicie o servidor de desenvolvimento:
 
-### Code Splitting
+cd frontend
+npm install
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Acesse: http://localhost:3000
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+🔐 Lógica de Acesso (Destaque Técnico)
+O sistema possui um fluxo de autenticação simulado que extrai o nome do usuário diretamente do input de e-mail, demonstrando o gerenciamento de estados (useState) no React para personalizar a saudação no Dashboard em tempo real.
